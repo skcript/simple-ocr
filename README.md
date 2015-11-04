@@ -1,4 +1,4 @@
-# simple-ocr
+# Simple-OCR
 Simple-OCR provides a more convenient way of reading PDF's and Images using the Tessaract Engine.
 
 <h3>Installation Instructions</h3>
@@ -14,7 +14,7 @@ It's very _simple_ to use Simple-OCR:
 img = Image::OCR.new("source.png")
 img.scan("scanned_source.png", "-l eng", pdf)
 img.scan("scanned_source.png", "options", pdf)
-``
+```
 
 You can also give custom commang line options.
 ```
