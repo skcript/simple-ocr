@@ -11,12 +11,24 @@ Simple-OCR provides a more convenient way of reading PDF's and Images using the 
 It's very _simple_ to use Simple-OCR:
 
 ```
+# Specify the path of your source image or PDF.
 img = Image::OCR.new("source.png")
-img.scan("scanned_source.png", "-l eng", pdf)
-img.scan("scanned_source.png", "options", pdf)
+
+# Specify the output file name, called "destination" here.
+img.scan("destination", "-l eng", :pdf)
 ```
 
-You can also give custom commang line options.
+You can also give custom command line options.
 ```
-img.scan("scanned_source.png", "-l eng -psm 1....")
+img.scan("destination", "-l eng -psm 1...", :pdf)
+```
+
+It is also possible to specify the output file type, which can either be:
+- pdf
+- txt
+- hocr
+
+```
+img.scan("destination", "-l eng", :txt)
+img.scan("destination", "-l eng", :hocr)
 ```
