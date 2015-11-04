@@ -12,7 +12,7 @@ It's very _simple_ to use Simple-OCR:
 
 ```
 # Specify the path of your source image or PDF.
-img = Image::OCR.new("source.png")
+img = OCR::Image.new("source.png")
 
 # Specify the output file name, called "destination" here.
 img.scan("destination", "-l eng", :pdf)
