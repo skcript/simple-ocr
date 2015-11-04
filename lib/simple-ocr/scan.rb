@@ -11,16 +11,25 @@ module OCR
 		def initialize(input_file, output_file, options, type)
 			@output_file = output_file
 			@options = options
-			@type = type
+			@type = handle_output_type(type)
 			@input_file = input_file
 			if OCR::Path.new(input_file).name_exten[1] == OCR::Path::EXTENS[:pdf]
-				puts "i am here"
 				@image = OCR::Path.new(input_file).image_path
 				convert_to_img
 			else
 				@image = input_file
 			end
 			@clean_image = OCR::Path.new(input_file).clean_image_path
+		end
+		
+		def handle_output_type(type)
+			if type == :pdf
+				"pdf"
+			elsif type == :hocr
+				"hocr"
+			else
+				nil.to_s
+			end
 		end
 
 		# Conversion of PDF to Image
@@ -45,7 +54,7 @@ module OCR
 			`sh ./textcleaner -g -e stretch -f 25 -o 20 -t 30 -u -s 1 -T -p 20 '#{@image}' '#{@clean_image}'`
 		end
 
-		# Deleting unnecessary file after processing.
+		# Deleting unnecessary files after processing.
 		def delete_files
 			FileUtils.rm_rf(@clean_image)
 			FileUtils.rm_rf(@image) if OCR::Path.new(@input_file).name_exten[1] == "pdf"
