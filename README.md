@@ -1,24 +1,22 @@
 # simple-ocr
-Simple-Ocr is a gem which provides more convenient of doing OCR on PDFs and Images.
-Gem is built on top of Open Source Technology named Tesseract.
+Simple-OCR provides a more convenient way of reading PDF's and Images using the Tessaract Engine.
 
-<h3>Installation Procedure</h3>
+<h3>Installation Instructions</h3>
 
-1. Install tesseract.
-2. Install ImageMagick.
+1. Install [Tesseract](https://code.google.com/p/tesseract-ocr/).
+2. Install [ImageMagick](http://www.imagemagick.org/script/index.php).
 
 <h3>Example Usage</h3>
 
-It's very simple to use simple-ocr:
+It's very _simple_ to use Simple-OCR:
 
-`img = Image::OCR.new("source.png")`
+```
+img = Image::OCR.new("source.png")
+img.scan("scanned_source.png", "-l eng", pdf)
+img.scan("scanned_source.png", "options", pdf)
+``
 
-`img.scan("scanned_source.png", "-l eng", pdf)`
-
-`#img.scan("scanned_source.png", "options", pdf)`
-
-
-Give custom command line options with a string.
-
-`img.scan("scanned_source.png", "-l eng -psm 1....")`
-
+You can also give custom commang line options.
+```
+img.scan("scanned_source.png", "-l eng -psm 1....")
+```
