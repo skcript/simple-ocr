@@ -1,3 +1,0 @@
-class ZonalOcr
-	
-end
