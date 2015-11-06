@@ -1,3 +1,5 @@
-class ZonalOcr
-	
+module OCR
+	class ZonalOcr
+		
+	end
 end
