@@ -14,7 +14,6 @@ module OCR
 			@type = type
 			@input_file = input_file
 			if OCR::Path.new(input_file).name_exten[1] == OCR::Path::EXTENS[:pdf]
-				puts "i am here"
 				@image = OCR::Path.new(input_file).image_path
 				convert_to_img
 			else
