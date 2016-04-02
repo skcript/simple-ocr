@@ -53,7 +53,7 @@ module OCR
 		def clean_img
 			name = 'simple-ocr'
 			g = Gem::Specification.find_by_name(name)
-			`sh #{File.join( g.full_gem_path, 'textcleaner')} -g -e stretch -f 25 -o 20 -t 30 -u -s 1 -T -p 20 '#{@image}' '#{@clean_image}'`
+			`sh #{File.join(g.full_gem_path, 'lib/textcleaner')} -g -e stretch -f 25 -o 20 -t 30 -u -s 1 -T -p 20 '#{@image}' '#{@clean_image}'`
 		end
 
 		# Deleting unnecessary files after processing.
