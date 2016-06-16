@@ -1,4 +1,5 @@
 require 'open3'
+require 'fileutils'
 
 module OCR
 	class Scan
@@ -13,20 +14,20 @@ module OCR
 			@options = options
 			@type = handle_output_type(type)
 			@input_file = input_file
-			if OCR::Path.new(input_file).name_exten[1] == OCR::Path::EXTENS[:pdf]
+			if pdf?(input_file)
 				@image = OCR::Path.new(input_file).image_path
 				convert_to_img
 			else
 				@image = input_file
 			end
-			@clean_image = OCR::Path.new(input_file).clean_image_path
+			@clean_image = OCR::Path.new(output_file).clean_image_path
 		end
 		
 		def handle_output_type(type)
 			if type == :pdf
-				"pdf"
+				'pdf'
 			elsif type == :hocr
-				"hocr"
+				'hocr'
 			else
 				nil.to_s
 			end
@@ -59,8 +60,11 @@ module OCR
 		# Deleting unnecessary files after processing.
 		def delete_files
 			FileUtils.rm_rf(@clean_image)
-			FileUtils.rm_rf(@image) if OCR::Path.new(@input_file).name_exten[1] == "pdf"
+			FileUtils.rm_rf(@image) if pdf?
 		end
 
+		def pdf?(input_file = @input_file)
+			OCR::Path.new(input_file).name_exten[1] == OCR::Path::EXTENS[:pdf]
+		end
 	end
 end

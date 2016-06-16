@@ -21,7 +21,7 @@ module OCR
 		#
 		# @return [String] input file path
 		def duplicate_path
-			return @input_file.dup
+			@input_file.dup
 		end
 
 		# From PDF to Image conversion
@@ -30,7 +30,7 @@ module OCR
 		def image_path
 			duppath = duplicate_path
 			duppath[name_exten[1]] = Path::EXTENS[:png]
-			return duppath
+			duppath
 		end
 
 		# Clean your Input File
@@ -38,15 +38,15 @@ module OCR
 		# @return [String] Cleaned Image Path
 		def clean_image_path
 			duppath = duplicate_path
-			duppath[get_filename] = "cleaned_"+name_exten[0]+".png"
-			return duppath
+			duppath[get_filename] = "cleaned_"+get_filename+".png"
+			duppath
 		end
 
 		# Get the FileName
 		#
 		# @return [String] Filename
 		def get_filename
-			File.basename(@input_file).split("/")[0]
+			File.basename(@input_file)
 		end
 	end
 end
