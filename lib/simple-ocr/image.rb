@@ -13,8 +13,7 @@ module OCR
 		#
 		# @params [String, String, String] path to output file, options of conversion (e.g. Language), output format of file.
 		def scan(output_file, options, type)
-	      Scan.new(@image, output_file, options, type).scan_img
-	    end
-
+      Scan.new(@image, output_file, options, type).scan_img
+    end
 	end
 end

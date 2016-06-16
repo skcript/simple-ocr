@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'simple-ocr'
-  s.version     = '1.0.0'
+  s.version     = '1.0.2'
   s.date        = '2015-10-28'
   s.summary     = "OCR Engine by Skcript"
   s.description = "Provides smart conversion of all scanned Images."
